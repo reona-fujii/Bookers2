@@ -16,37 +16,35 @@
         <div class="nav navbar-nav" style="color:#ffffff"><h4>Bookers</h4></div>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-          <li role="presentation">
-            <%= link_to root_path do %><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home<% end %>
-          </li>
-          <li role="presentation">
-            <%= link_to homes_about_path do %><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Users<% end %>
-          </li>
-          <li role="presentation">
-            <%= link_to new_user_registration_path do %><span class="glyphicon glyphicon-book" aria-hidden="true"></span>Books<% end %>
-          </li>
-          <li role="presentation">
-            <%= link_to new_user_session_path do %><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>logout<% end %>
-          </li>
+            <li role="presentation">
+              <%= link_to user_path(current_user.id) do %><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home<% end %>
+            </li>
+            <li role="presentation">
+              <%= link_to users_path do %><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Users<% end %>
+            </li>
+            <li role="presentation">
+              <%= link_to books_path do %><span class="glyphicon glyphicon-book" aria-hidden="true"></span>Books<% end %>
+            </li>
+            <li role="presentation">
+              <%= link_to destroy_user_session_path, method: :delete do %><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> logout<% end %>
+            </li>
           <% else %>
-          <li role="presentation">
-            <%= link_to root_path do %><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home<% end %>
-          </li>
-          <li role="presentation">
-            <%= link_to homes_about_path do %><span class="glyphicon glyphicon-link" aria-hidden="true"></span>About<% end %>
-          </li>
-          <li role="presentation">
-            <%= link_to new_user_registration_path do %><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>sign up<% end %>
-          </li>
-          <li role="presentation">
-            <%= link_to new_user_session_path do %><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>login<% end %>
-          </li>
+            <li role="presentation">
+              <%= link_to root_path do %><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home<% end %>
+            </li>
+            <li role="presentation">
+              <%= link_to homes_about_path do %><span class="glyphicon glyphicon-link" aria-hidden="true"></span>About<% end %>
+            </li>
+            <li role="presentation">
+              <%= link_to new_user_registration_path do %><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>sign up<% end %>
+            </li>
+            <li role="presentation">
+              <%= link_to new_user_session_path do %><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> login<% end %>
+            </li>
           <% end %>
         </ul>
       </div>
     </nav>
-
-
     <%= yield %>
   </body>
 </html>
