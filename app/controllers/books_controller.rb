@@ -6,11 +6,12 @@ class BooksController < ApplicationController
   end
 
   def show
-    @books = Book.all
-    @book = Book
+    @books = Book.find(params[:id])
+    @book = Book.new
   end
 
   def edit
+    @book = Book.find(params[:id])
   end
 
   def create
@@ -26,6 +27,14 @@ class BooksController < ApplicationController
   end
 
   def update
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+       flash[:notice]="You have updated book successfully."
+       redirect_to book_path(@book)
+    else
+      
+      render "edit"
+    end
   end
 
   def destroy
