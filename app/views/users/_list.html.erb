@@ -1,0 +1,44 @@
+ 
+ <h1>User info</h1>
+            <%= attachment_image_tag user, :profile_image, :fill, 60, 60, class:"pull-left, profile-thumb", fallback: "no_image.jpg" %>
+            <table class="table">
+                <thred>
+                    <tr>
+                        <th>name</th>
+                        <th><%= user.name %></th>
+                    </tr>
+                    <tr>
+                        <th>introduction</th>
+                        <th><%= current_user.introduction %></th>
+                    </tr>
+                </thred>
+            </table>
+            <div>
+                <% if user.name == current_user.name %>
+                <%= link_to edit_user_path(current_user.id), class:"btn btn-default col-xs-12" do %><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><% end %>
+                <% else %>
+                <%= link_to user_path(current_user.id), class:"btn btn-default col-xs-12" do %><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><% end %>
+                <% end %>
+            </div>
+            <h1 class="new-book">New Book</h1>
+            <%= form_with model:@book, local:true do |f| %>
+            <div class="field">
+                <div>
+                    <%= f.label :title %>
+                </div>
+                <div>
+                <%= f.text_field :title, class:"col-xs-12" %>
+                </div>
+            </div>
+            <div class="opinion">
+                <div>
+                    <%= f.label :opinion %>
+                </div>
+                <div>
+                    <%= f.text_area :opinion, class:"col-xs-12" %>
+                </div>
+            </div>
+            <div>
+                <%= f.submit 'Create Book' , class:"create-book btn btn-primary col-xs-12" %>
+            </div>
+            <% end %>

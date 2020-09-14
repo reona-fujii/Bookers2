@@ -1,45 +1,8 @@
 <div class="container">
+    <%= flash[:notice] %>
     <div class="row">
         <div class="col-md-3">
-            <h1>User info</h1>
-            <%= attachment_image_tag @books.user, :profile_image, :fill, 60, 60, class:"pull-left, profile-thumb", fallback: "no_image.jpg" %>
-            <table class="table">
-                <thred>
-                    <tr>
-                        <th>name</th>
-                        <th><%= @books.user.name %></th>
-                    </tr>
-                    <tr>
-                        <th>introduction</th>
-                        <th><%= current_user.introduction %></th>
-                    </tr>
-                </thred>
-            </table>
-            <div>
-                <%= link_to edit_user_path(current_user.id), class:"btn btn-default col-xs-12" do %><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><% end %>
-            </div>
-            <h1 class="new-book">New Book</h1>
-            <%= form_with model:@book, local:true do |f| %>
-            <div class="field">
-                <div>
-                    <%= f.label :title %>
-                </div>
-                <div>
-                <%= f.text_field :title, class:"col-xs-12" %>
-                </div>
-            </div>
-            <div class="opinion">
-                <div>
-                    <%= f.label :opinion %>
-                </div>
-                <div>
-                    <%= f.text_area :opinion, class:"col-xs-12" %>
-                </div>
-            </div>
-            <div>
-                <%= f.submit 'Create Book' , class:"create-book btn btn-primary col-xs-12" %>
-            </div>
-            <% end %>
+            <%= render 'users/list', user: @user %>
         </div>
         <div class="col-md-9">
             <h1>Book detail</h1>
@@ -67,7 +30,7 @@
                       <td><%= @books.opinion %></td>
                       <% if current_user.id == @books.user_id %>
                       <td><%= link_to edit_book_path(@books), class:"btn btn-success" do %>Edit<% end %></td>
-                      <td><%= link_to book_path(@books), method: :delete, class:"btn btn-danger" do %>Destroy<% end %></td>
+                      <td><%= link_to book_path(@books), method: :delete, "data-confirm"=> "本当に削除しますか？", class:"btn btn-danger" do %>Destroy<% end %></td>
                       <% end %>
                     </tr>
                 </tbody>
