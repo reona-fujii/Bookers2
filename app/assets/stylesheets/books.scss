@@ -1,0 +1,22 @@
+// Place all the styles related to the Books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.edit-block {
+  display: flex;
+}
+.link-btn {
+  padding: 0 5px;
+}
+.link-btn:hover{
+  background-color: black;
+  color: #4682b4;
+}
+.alert {
+  color: red;
+}
+.create-book {
+  margin-top: 10px;
+}
+.new-book {
+  margin-top: 100px;
+}
