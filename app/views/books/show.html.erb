@@ -1,10 +1,14 @@
 <div class="container">
-    <%= flash[:notice] %>
+    <% flash.each do |name, msg| %>
+      <div class="flash text-success<%= name %>">
+        <%= msg.html_safe %>
+      </div>
+    <% end %>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-xs-3">
             <%= render 'users/list', user: @user %>
         </div>
-        <div class="col-md-9">
+        <div class="col-xs-9">
             <h1>Book detail</h1>
             <table class="table table-hover">
                 <thead>
@@ -27,7 +31,7 @@
                           </div>
                       </td>
                       <td><%= link_to book_path(@books), class:"link-btn" do %><%= @books.title %><% end %></td>
-                      <td><%= @books.opinion %></td>
+                      <td><%= @books.body %></td>
                       <% if current_user.id == @books.user_id %>
                       <td><%= link_to edit_book_path(@books), class:"btn btn-success" do %>Edit<% end %></td>
                       <td><%= link_to book_path(@books), method: :delete, "data-confirm"=> "本当に削除しますか？", class:"btn btn-danger" do %>Destroy<% end %></td>

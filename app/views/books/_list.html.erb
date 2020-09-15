@@ -16,7 +16,7 @@
         <div>
         <%= link_to edit_user_path(current_user.id), class:"btn btn-default col-xs-12" do %><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><% end %>
         </div>
-        <h1 class="new-book">New Book</h1>
+        <h1 class="new-book">New book</h1>
         <%= form_with model:book, local:true do |f| %>
         <div class="field">
             <div>
@@ -28,10 +28,10 @@
         </div>
         <div class="opinion">
             <div>
-                <%= f.label :opinion %>
+                <%= f.label :body %>
             </div>
             <div>
-                <%= f.text_area :opinion, class:"col-xs-12" %>
+                <%= f.text_area :body, class:"col-xs-12" %>
             </div>
         </div>
         <div>

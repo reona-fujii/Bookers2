@@ -15,7 +15,7 @@
  */
   @import "bootstrap-sprockets";
   @import "bootstrap";
-  
+
  .sign_up_btn {
    margin: 10px 0;
  }
@@ -25,4 +25,7 @@
  .error_explanation {
    color: red;
  }
-  
+ .flash {
+   color: green;
+ }
+
