@@ -16,3 +16,11 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+var title = 'javascriptが使えました';
+alert(title);
+
+$(document).ready(function(){
+  $('.glyphicon').on('click',function(){
+    $(this).css('color', 'red');
+  });
+});
